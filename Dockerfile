@@ -9,4 +9,4 @@ RUN pip install -r requirements.txt
 
 RUN gcc test_file.c -o test_file
 
-CMD ["python", "app.py"]
+CMD ["python", "bot.py"]
