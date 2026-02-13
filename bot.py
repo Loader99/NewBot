@@ -3,15 +3,15 @@ import subprocess
 import shlex
 import os
 
-API_TOKEN = 'YOUR_BOT_TOKEN'
-ADMIN_ID = 7899583720        # अपना Telegram ID यहाँ डालें
-bot = telebot.TeleBot("8278930868:AAEFn-tRoVH-aP5x8OnxONoUKiq3k6r9rEw")
+API_TOKEN = 'YOUR_BOT_TOKEN' # यहाँ अपना टोकन डालें
+ADMIN_ID = 7899583720;        # अपना Telegram ID यहाँ डालें
+bot = telebot.TeleBot(API_TOKEN)
 process = None
 
 @bot.message_handler(commands=['attack'])
 def start_attack(message):
     global process
-    if message.from_user.id != 7899583720:
+    if message.from_user.id != ADMIN_ID:
         return
 
     args = message.text.split()
@@ -37,5 +37,10 @@ def stop_attack(message):
         bot.reply_to(message, "🛑 Attack Stopped.")
     else:
         bot.reply_to(message, "No active attack.")
+
+@bot.message_handler(func=lambda m: True)
+def debug(message):
+    print(f"Received from {message.from_user.id}: {message.text}")
+    bot.reply_to(message, f"Your ID: {message.from_user.id}")
 
 bot.polling()
