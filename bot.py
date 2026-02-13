@@ -29,13 +29,18 @@ def start_attack(message):
     except Exception as e:
         bot.reply_to(message, f"Error: {e}")
 
+@bot.message_handler(commands=['start'])
+def start_command(message):
+    bot.reply_to(message, "Bot working ✅")
+
+
 @bot.message_handler(commands=['stop'])
 def stop_attack(message):
     global process
     if process and process.poll() is None:
-        process.terminate() # प्रोसेस को बंद करता है
-        bot.reply_to(message, "🛑 Attack Stopped.")
+        process.terminate()
+        bot.reply_to(message, "🛑 At.")
     else:
-        bot.reply_to(message, "No active attack.")
+        bot.reply_to(message, "No .")
 
-bot.polling()
+bot.polling(none_stop=True)
