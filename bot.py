@@ -8,8 +8,8 @@ ADMIN_ID = 7899583720        # अपना Telegram ID यहाँ डाल�
 bot = telebot.TeleBot("8278930868:AAEFn-tRoVH-aP5x8OnxONoUKiq3k6r9rEw")
 process = None
 
-@bot.message_handler(commands=['button'])
-def start_button(message):
+@bot.message_handler(commands=['attack'])
+def start_attack(message):
     global process
     if message.from_user.id != 7899583720:
         return
@@ -33,9 +33,9 @@ def start_button(message):
 def stop_attack(message):
     global process
     if process and process.poll() is None:
-        process.terminate()
-        bot.reply_to(message, "🛑 At.")
+        process.terminate() # प्रोसेस को बंद करता है
+        bot.reply_to(message, "🛑 Attack Stopped.")
     else:
-        bot.reply_to(message, "No .")
+        bot.reply_to(message, "No active attack.")
 
-bot.polling(none_stop=True)
+bot.polling()
