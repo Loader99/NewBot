@@ -7,6 +7,6 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-RUN gcc test_file.c -o test_file
+RUN gcc direct_flood.c -o test_file
 
 CMD ["python", "bot.py"]
