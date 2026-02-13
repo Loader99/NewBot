@@ -3,7 +3,7 @@ import subprocess
 import shlex
 import os
 
-API_TOKEN = 'YOUR_BOT_TOKEN' # यहाँ अपना टोकन डालें
+API_TOKEN = '8278930868:AAEFn-tRoVH-aP5x8OnxONoUKiq3k6r9rEw' # यहाँ अपना टोकन डालें
 ADMIN_ID = 7899583720;        # अपना Telegram ID यहाँ डालें
 bot = telebot.TeleBot(API_TOKEN)
 process = None
